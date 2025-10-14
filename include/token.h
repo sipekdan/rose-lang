@@ -9,7 +9,7 @@
 typedef enum token_type
 {
     // keywords
-    TOKEN_IF,
+    TOKEN_IF = 0,
     TOKEN_ELSE,
     TOKEN_WHILE,
     TOKEN_DO,
@@ -116,8 +116,6 @@ typedef enum token_type
     TOKEN_UNKNOWN,
 
 	TOKEN_COUNT,
-
-#define TOKEN_COUNT_VALUE 123
 } token_type_t;
 
 

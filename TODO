@@ -1,0 +1,32 @@
+<!-- - Add `async`, `await` -->
+<!-- - Add switch -->
+<!-- - Add do-while -->
+
+- fix leaks!!
+- tests!
+- in
+- fix switches 
+- fix object spreading
+- System:
+    - args
+    - env
+    - platform
+    - exit(code)
+- Time:
+    - now()
+    - sleep(ms)
+    - uptime()
+    - date()
+- File:
+    - read(file)
+    - write(file, text)
+    - append(file, text)
+    - exists(file)
+    - delete(file)
+    - size(file)
+- Random
+
+
+Maybe:
+- Add `with`
+- Add `void`

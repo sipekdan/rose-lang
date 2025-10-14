@@ -1,0 +1,74 @@
+# compiled object files
+*.o
+*.obj
+
+# precompiled Headers
+*.gch
+*.pch
+
+# compiled Dynamic Libraries
+*.so
+*.dylib
+*.dll
+
+# compiled Static Libraries
+*.a
+*.lib
+
+# executable files
+*.exe
+*.out
+*.app
+
+# debug files
+*.dSYM/
+*.stackdump
+
+# temporary files
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*.bak
+*.old
+
+# editor and IDE files
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-workspace
+*.sublime-project
+
+# macOS specific files
+.DS_Store
+
+# windows specific files
+Thumbs.db
+desktop.ini
+
+# make build directories
+/build/
+
+# autotools generated files
+*.lo
+*.la
+*.al
+.libs/
+*.deps
+autom4te.cache/
+config.log
+config.status
+
+# coverage files
+*.gcno
+*.gcda
+*.gcov
+
+# test binaries and results
+test-results/
+*.test
+
+# other generated files
+tags
+TAGS

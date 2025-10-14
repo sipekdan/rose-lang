@@ -1,4 +1,10 @@
 rosehip - Reference interpreter for the Rosehip language
 --------------------------------------------------------
 
+1) Installation on Linux:
+    
+    ./configure
+    make
+    sudo make install
+
 D. Sipek.

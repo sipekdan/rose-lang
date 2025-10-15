@@ -3,7 +3,7 @@
 
 const char *token_type_to_string(token_type_t type)
 {
-    static_assert(TOKEN_COUNT == 87, "Fix TOKEN_COUNT in 'token_type_to_string'");
+    static_assert(TOKEN_COUNT == 86, "Fix TOKEN_COUNT in 'token_type_to_string'");
 
     switch (type)
     {
@@ -84,7 +84,7 @@ const char *token_type_to_string(token_type_t type)
         case TOKEN_LOGICAL_AND: return "LOGICAL_AND";
         case TOKEN_LOGICAL_OR: return "LOGICAL_OR";
         case TOKEN_BANG: return "BANG";
-        case TOKEN_NULLISH_COALESCING: return "NULLISH_COALESCING";
+        // case TOKEN_NULLISH_COALESCING: return "NULLISH_COALESCING";
 
         case TOKEN_LEFT_PAREN: return "LEFT_PAREN";
         case TOKEN_RIGHT_PAREN: return "RIGHT_PAREN";

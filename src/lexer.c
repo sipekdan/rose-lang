@@ -197,7 +197,7 @@ static token_t *lexer_append(lexer_t *lexer, token_t token)
 
 static void lexer_tokenize(lexer_t *lexer)
 {
-    static_assert(TOKEN_COUNT == 87, "Fix TOKEN_COUNT in 'lexer_tokenize'");
+    static_assert(TOKEN_COUNT == 86, "Fix TOKEN_COUNT in 'lexer_tokenize'");
 
     while (true)
     {
@@ -540,10 +540,11 @@ static void lexer_tokenize(lexer_t *lexer)
             case ';': token.type = TOKEN_SEMICOLON; token.value = strdup(";"); token.length = 1; break;
             case ':': token.type = TOKEN_COLON; token.value = strdup(":"); token.length = 1; break;
             case '?':
-                if (lexer_match(lexer, '?')) {
-                    token.type = TOKEN_NULLISH_COALESCING; token.value = strdup("??"); token.length = 2;
-                }
-                else { token.type = TOKEN_QUESTION; token.value = strdup("?"); token.length = 1;}
+                // if (lexer_match(lexer, '?')) {
+                //     token.type = TOKEN_NULLISH_COALESCING; token.value = strdup("??"); token.length = 2;
+                // }
+                // else { token.type = TOKEN_QUESTION; token.value = strdup("?"); token.length = 1;}
+                token.type = TOKEN_QUESTION; token.value = strdup("?"); token.length = 1;
                 break; 
             default:
                 free(token.loc.filename);

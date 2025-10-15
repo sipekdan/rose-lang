@@ -92,7 +92,7 @@ typedef enum token_type
     TOKEN_LOGICAL_AND,  // &&
     TOKEN_LOGICAL_OR,   // ||
     TOKEN_BANG,         // !
-    TOKEN_NULLISH_COALESCING,   // ??
+    // TOKEN_NULLISH_COALESCING,   // ??
 
     // grouping
     TOKEN_LEFT_PAREN,       // (

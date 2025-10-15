@@ -7,7 +7,7 @@ DEP_DIR := $(BUILD_DIR)/dep
 INCLUDE_DIR := include
 TEST_DIR := tests
 
-PROJECT_NAME := rosehip
+PROJECT_NAME := rose
 VERSION := 0.1.0
 TARGET := $(BUILD_DIR)/$(PROJECT_NAME)_$(VERSION)
 

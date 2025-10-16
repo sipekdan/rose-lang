@@ -142,7 +142,7 @@ normal:
     while ((opt = getopt_long(argc, argv, "v", long_options, NULL)) != -1) {
         switch (opt) {
             case 'v':
-                printf("Rosehip interpreter version %s\n", VERSION);
+                printf("Rose interpreter version %s\n", VERSION);
                 return 0;
             default:
                 fprintf(stderr, "Usage: %s [--version|-v] [file]\n", argv[0]);

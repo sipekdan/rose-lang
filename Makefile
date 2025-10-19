@@ -45,8 +45,8 @@ $(TARGET): $(OBJ)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@) $(DEP_DIR)
-	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
-	@mv $(basename $@).d $(DEP_DIR)/$(notdir $(basename $@)).d
+	$(CC) $(CFLAGS) -MMD -MP -MF $(DEP_DIR)/$(notdir $(basename $@)).d -c $< -o $@
+# 	@mv $(basename $@).d $(DEP_DIR)/$(notdir $(basename $@)).d
 
 -include $(DEP)
 

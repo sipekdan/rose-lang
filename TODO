@@ -7,25 +7,30 @@
 - in
 - fix switches 
 - fix object spreading
-- System:
+
+- nullish (??)
+
+
+- system:
     - args
     - env
     - platform
     - exit(code)
-- Time:
+- time:
     - now()
     - sleep(ms)
     - uptime()
     - date()
-- File:
+- file:
     - read(file)
     - write(file, text)
     - append(file, text)
     - exists(file)
     - delete(file)
     - size(file)
-- Random
-
+- random:
+- math:
+    
 
 Maybe:
 - Add `with`

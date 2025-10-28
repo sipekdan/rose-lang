@@ -13,7 +13,7 @@ TARGET := $(BUILD_DIR)/$(PROJECT_NAME)_$(VERSION)
 
 CC := gcc
 CFLAGS := -Wall -Wextra -I$(INCLUDE_DIR) # -std=c99 
-LDFLAGS := # -lgmp -lmpfr
+LDFLAGS := -lm # -lgmp -lmpfr
 
 MODE ?= debug
 ifeq ($(MODE),debug)
@@ -30,10 +30,11 @@ SRC := \
     $(SRC_DIR)/lexer.c \
 	$(SRC_DIR)/node.c \
 	$(SRC_DIR)/parser.c \
-	$(SRC_DIR)/sema.c
-# 	$(SRC_DIR)/value.c
-# 	$(SRC_DIR)/env.c
-# 	$(SRC_DIR)/eval.c
+	$(SRC_DIR)/sema.c \
+	$(SRC_DIR)/value.c \
+	$(SRC_DIR)/env.c \
+	$(SRC_DIR)/stack.c \
+	$(SRC_DIR)/eval.c
 
 OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 DEP := $(OBJ:$(OBJ_DIR)/%.o=$(DEP_DIR)/%.d)

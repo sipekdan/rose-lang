@@ -20,7 +20,7 @@ void node_print(node_t *node)
 
 static void node_print_internal(node_t *node, int level)
 {
-    static_assert(NODE_COUNT == 37, "Fix NODE_COUNT in 'node_print_internal'");
+    static_assert(NODE_COUNT == 39, "Fix NODE_COUNT in 'node_print_internal'");
 
     node_indent(level);
 
@@ -97,7 +97,12 @@ static void node_print_internal(node_t *node, int level)
         case NODE_AWAIT:
             printf("Await\n");
             node_print_internal(node->await_expr.argument, level + 1);
-            break;    
+            break;
+
+        case NODE_NEW:
+            printf("New\n");
+            node_print_internal(node->new_expr.argument, level + 1);
+            break;
                 
         case NODE_BINARY:
             printf("Binary: '%s'\n", node->binary.op.value);
@@ -366,8 +371,13 @@ static void node_print_internal(node_t *node, int level)
         case NODE_IDENTIFIER:
             printf("Identifier: %s\n", node->identifier);
             break;
+
         case NODE_THIS:
             printf("This\n");
+            break;
+
+        case NODE_DEBUGGER:
+            printf("Debugger\n");
             break;
 
         case NODE_EMPTY:
@@ -383,7 +393,7 @@ static void node_print_internal(node_t *node, int level)
 
 void node_free(node_t *node)
 {
-    static_assert(NODE_COUNT == 37, "Fix NODE_COUNT in 'node_free'");
+    static_assert(NODE_COUNT == 39, "Fix NODE_COUNT in 'node_free'");
 
     if (!node) return;
 
@@ -526,6 +536,10 @@ void node_free(node_t *node)
             node_free(node->await_expr.argument);
             break;
 
+        case NODE_NEW:
+            node_free(node->new_expr.argument);
+            break;
+
         case NODE_BREAK:
             free(node->break_stmt.label);
             break;
@@ -597,6 +611,10 @@ void node_free(node_t *node)
         case NODE_THIS:
             /* nothing to free */
             break;
+        
+        case NODE_DEBUGGER:
+            /* nothing to free */
+            break;
 
         case NODE_EMPTY:
             /* nothing to free */
@@ -621,6 +639,8 @@ void node_build(node_t *node)
 
 static void node_build_internal(node_t *node)
 {
+    static_assert(NODE_COUNT == 39, "Fix NODE_COUNT in 'node_build_internal'");
+
     if (!node) return;
 
     switch (node->type)
@@ -681,6 +701,13 @@ static void node_build_internal(node_t *node)
         case NODE_AWAIT:
             printf("await ");
             node_build_internal(node->await_expr.argument);
+            break;
+
+        case NODE_NEW:
+            printf("(");
+            printf("new ");
+            node_build_internal(node->new_expr.argument);
+            printf(")");
             break;
 
         case NODE_BINARY:
@@ -805,7 +832,7 @@ static void node_build_internal(node_t *node)
         case NODE_OBJECT:
             printf("{");
             for (size_t i = 0; i < node->object.count; i++) {
-                printf("%s: ", node->object.keys[i]);
+                printf("\"%s\": ", node->object.keys[i]);
                 node_build_internal(node->object.values[i]);
                 if (i < node->object.count - 1) printf(", ");
             }
@@ -911,6 +938,10 @@ static void node_build_internal(node_t *node)
 
         case NODE_THIS:
             printf("this");
+            break;
+
+        case NODE_DEBUGGER:
+            printf("debugger");
             break;
 
         case NODE_EMPTY:
@@ -1195,7 +1226,7 @@ node_t *node_create_empty(location_t loc) {
 
 const char *node_type_to_string(node_type_t type)
 {
-    static_assert(NODE_COUNT == 37, "Fix NODE_COUNT in 'node_type_to_string'");
+    static_assert(NODE_COUNT == 39, "Fix NODE_COUNT in 'node_type_to_string'");
 
     switch (type)
     {
@@ -1205,6 +1236,7 @@ const char *node_type_to_string(node_type_t type)
         case NODE_SWITCH: return "SWITCH";
         case NODE_LABEL: return "LABEL";
         case NODE_AWAIT: return "AWAIT";
+        case NODE_NEW: return "NEW";
         case NODE_BINARY: return "BINARY";
         case NODE_UNARY: return "UNARY";
         case NODE_ASSIGNMENT: return "ASSIGNMENT";
@@ -1235,6 +1267,7 @@ const char *node_type_to_string(node_type_t type)
         case NODE_BOOL: return "BOOL";
         case NODE_IDENTIFIER: return "IDENTIFIER";
         case NODE_THIS: return "THIS";
+        case NODE_DEBUGGER: return "DEBUGGER";
         case NODE_EMPTY: return "EMPTY";
         default: return "UNKNOWN";
     }

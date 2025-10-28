@@ -41,7 +41,9 @@ typedef enum node_type
     NODE_SWITCH,
     NODE_LABEL,
     NODE_AWAIT,
+    NODE_NEW,
     NODE_THIS,
+    NODE_DEBUGGER,
     
     NODE_BREAK,
     NODE_CONTINUE,
@@ -337,7 +339,16 @@ typedef struct node
             struct node *argument;
         } await_expr;
 
+        /* NODE_NEW */
+        struct
+        {
+            struct node *argument;
+        } new_expr;
+
         /* NODE_THIS */
+        /* no data needed */
+        
+        /* NODE_DEBUGGER */
         /* no data needed */
     };
 } node_t;

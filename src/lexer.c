@@ -197,7 +197,7 @@ static token_t *lexer_append(lexer_t *lexer, token_t token)
 
 static void lexer_tokenize(lexer_t *lexer)
 {
-    static_assert(TOKEN_COUNT == 86, "Fix TOKEN_COUNT in 'lexer_tokenize'");
+    static_assert(TOKEN_COUNT == 88, "Fix TOKEN_COUNT in 'lexer_tokenize'");
 
     while (true)
     {
@@ -441,6 +441,8 @@ static void lexer_tokenize(lexer_t *lexer)
             else if (length == 6 && strncmp(value, "delete", 6) == 0) token.type = TOKEN_DELETE;
             else if (length == 4 && strncmp(value, "this", 4) == 0) token.type = TOKEN_THIS;
             else if (length == 4 && strncmp(value, "void", 4) == 0) token.type = TOKEN_VOID;
+            else if (length == 3 && strncmp(value, "new", 3) == 0) token.type = TOKEN_NEW;
+            else if (length == 8 && strncmp(value, "debugger", 8) == 0) token.type = TOKEN_DEBUGGER;
             else token.type = TOKEN_IDENTIFIER;
 
             lexer_append(lexer, token);

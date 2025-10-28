@@ -41,6 +41,8 @@ typedef enum token_type
     TOKEN_DELETE,
     TOKEN_THIS,
     TOKEN_VOID,
+    TOKEN_NEW,
+    TOKEN_DEBUGGER,
 
 	// literals
 	TOKEN_IDENTIFIER,

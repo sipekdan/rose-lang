@@ -72,3 +72,6 @@ test-results/
 # other generated files
 tags
 TAGS
+
+# temp files
+temp/
